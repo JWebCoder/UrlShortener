@@ -1,9 +1,11 @@
-/* jQuery URL Shortener v0.1
-* https://github.com/JWebCoder/UrlShortener
-*
-*
-* Date: @DATE
-*/
+//	Author: João Moura
+//	Author blog: http://JWebCoder.wordpress.com
+//	GitHub: https://github.com/JWebCoder/UrlShortener
+//
+//	urlShortener v0.1
+//
+//	JavaScript plugin to create shortLinks using google API
+
 
 var urlShortener = {
 	settings:{
