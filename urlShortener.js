@@ -34,19 +34,12 @@ var urlShortener = {
 		
 		var data = {longUrl: url};
 		var shortUrl =undefined;
-		$.ajax({
-			async:false,
-			type: "POST",
-			url: requestUrl,
-			data: JSON.stringify(data),
-			contentType:"application/json; charset=utf-8",
-			dataType:"json",
-		}).done(function( info ) {
-			shortUrl=info.id;
-		}).fail(function(jqXHR, textStatus, errorThrown){ 
-		
-		});
-		return shortUrl;
+		ajax = new XMLHttpRequest();
+		ajax.open("POST",requestUrl,false);
+		ajax.setRequestHeader("Content-type","application/json; charset=utf-8");
+		ajax.send(JSON.stringify(data));
+		shortUrl = JSON.parse(ajax.responseText);
+		return shortUrl.id;
 	},
 	
 	urlInfo : function(requestUrl,projection){
@@ -54,19 +47,16 @@ var urlShortener = {
 			requestUrl += "&projection="+projection;
 		}
 		var urlInfo =undefined;
-		$.ajax({
-			async:false,
-			type: "GET",
-			url: requestUrl,
-			contentType:"application/json; charset=utf-8",
-			dataType:"json",
-		}).done(function( info ) {
-			if(projection == undefined){
-				urlInfo=info.longUrl; //return long URL;
-			}else{
-				urlInfo = info; //return full info;
-			}
-		}).fail(function(jqXHR, textStatus, errorThrown) { });
+		ajax = new XMLHttpRequest();
+		ajax.open("GET",requestUrl,false);
+		ajax.setRequestHeader("Content-type","application/json; charset=utf-8");
+		ajax.send();
+		info = JSON.parse(ajax.responseText);
+		if(projection == undefined){
+			urlInfo=info.longUrl; //return long URL;
+		}else{
+			urlInfo = info; //return full info;
+		}
 		return urlInfo;
 	}
 }

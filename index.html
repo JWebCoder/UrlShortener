@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="JSLoader.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			JSLoader.onLoad(start);
+			JSLoader.loadfile([{"fileName":"urlShortener.js","fileType":"js"}]);
+			function start(){
+				urlShortener.settings.apiKey = "AIzaSyCi73jlKAH38vyiaEYs1PRor0OzhozlqqU";
+				document.getElementById("shortUrl").innerHTML = urlShortener.getLink({"longUrl":"http://jwebcoder.wordpress.com"});
+				document.getElementById("shortUrl").setAttribute("href",document.getElementById("shortUrl").innerHTML);
+				
+				document.getElementById("relong").innerHTML = urlShortener.getLink({"shortUrl":document.getElementById("shortUrl").innerHTML});
+				document.getElementById("relong").setAttribute("href",document.getElementById("relong").innerHTML);
+				
+				document.getElementById("analytics").innerHTML = JSON.stringify(urlShortener.getLink({"shortUrl":document.getElementById("shortUrl").innerHTML,"projection":"FULL"}));
+			}
+		</script>
+	</head>
+	<body>
+		The link to get the short url:<br>
+		Long url - <a id="longUrl" href="http://jwebcoder.wordpress.com">http://jwebcoder.wordpress.com</a><br><br>
+		
+		code line: <b>urlShortener.getLink({"longUrl":"http://jwebcoder.wordpress.com"});</b><br>
+		Short url - <a id="shortUrl" href="#"></a><br><br>
+		
+		code line: <b>urlShortener.getLink({"shortUrl":document.getElementById("shortUrl").innerHTML});</b><br>
+		Remake long url - <a id="relong" href="#"></a><br><br>
+		
+		code line: <b>urlShortener.getLink({"shortUrl":document.getElementById("shortUrl").innerHTML,"projection":"FULL"});</b><br>
+		Shot link analitycs - <span id="analytics"></span>
+	</body>
+</html>
