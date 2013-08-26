@@ -33,7 +33,7 @@ Setting the key
     urlShortener.settings.apiKey = "Your API Key";
     
 
-Getting a short url
+Generate a short url
 -----
 
     var shortLink = urlShortener.getLink({ "longUrl" : "http://jwebcoder.wordpress.com" });
