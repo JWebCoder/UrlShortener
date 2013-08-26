@@ -6,7 +6,7 @@
 			JSLoader.onLoad(start);
 			JSLoader.loadfile([{"fileName":"urlShortener.js","fileType":"js"}]);
 			function start(){
-				urlShortener.settings.apiKey = "AIzaSyCi73jlKAH38vyiaEYs1PRor0OzhozlqqU";
+				urlShortener.settings.apiKey = "Your API Key";
 				document.getElementById("shortUrl").innerHTML = urlShortener.getLink({"longUrl":"http://jwebcoder.wordpress.com"});
 				document.getElementById("shortUrl").setAttribute("href",document.getElementById("shortUrl").innerHTML);
 				
