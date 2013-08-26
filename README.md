@@ -47,7 +47,7 @@ Remake the long url
 Get Url Analytics
 -----
 
-    var analytics = urlShortener.getLink({ "shotUrl" : "http://goo.gl/hmL34J" , "projection" : "FULL" });
+    var analytics = JSON.stringify(urlShortener.getLink({ "shotUrl" : "http://goo.gl/hmL34J" , "projection" : "FULL" }));
     
 Projection parameter values
 -----
