@@ -41,7 +41,7 @@ Generate a short url
 Remake the long url
 -----
 
-    var longLink = urlShortener.getLink({ "shotUrl" : "http://goo.gl/hmL34J" });
+    var longLink = urlShortener.getLink({ "shortUrl" : "http://goo.gl/hmL34J" });
     
 
 Get Url Analytics
