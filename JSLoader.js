@@ -67,5 +67,28 @@ var JSLoader = {
 		        window.onload = function() { fn(); };
 		    }
 		}
+	},
+	onReady:function(fn){
+		if(document.addEventListener){
+			document.addEventListener('DOMContentLoaded', function() { fn(); });
+		}else{
+			if(document.onreadystatechange){
+				var curronready = document.onreadystatechange;
+				var newonready = function(){
+					curronready();
+					if(document.readyState == "complete"){
+						fn();
+					}
+				};
+				document.onreadystatechange = newonready;
+			}
+			else{
+				document.onreadystatechange = function(){
+					if(document.readyState == "complete"){
+						fn();
+					}
+				};
+			}
+		}
 	}
 }
