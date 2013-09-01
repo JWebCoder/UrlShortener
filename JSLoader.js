@@ -53,8 +53,10 @@ var JSLoader = {
 		return true;
 	},
 	onLoad:function(fn){
-		if (window.attachEvent) {
-		    window.attachEvent('onload', function() { fn(); });
+		if (window.addEventListener){
+		    window.addEventListener('load', function() { fn(); },false);
+		}else if (window.attachEvent) {
+			window.attachEvent('onload',function(){ fn(); } );
 		} else {
 		    if (window.onload) {
 		        var curronload = window.onload;
@@ -70,7 +72,7 @@ var JSLoader = {
 	},
 	onReady:function(fn){
 		if(document.addEventListener){
-			document.addEventListener('DOMContentLoaded', function() { fn(); });
+			document.addEventListener('DOMContentLoaded', function() { fn(); },false);
 		}else{
 			if(document.onreadystatechange){
 				var curronready = document.onreadystatechange;
